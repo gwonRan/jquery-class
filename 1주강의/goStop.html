@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>test</title>
+        <style>
+body{ margin:10px; background:#D0D0D0; }
+#myCanvas{ background:#FFF; border:#909090 1px solid; }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="400" height="300">CANVAS를 지원하지 않습니다.</canvas>  
+        <script>            
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var ctxW = canvas.width; 
+var ctxH = canvas.height;
+var x = 0;     
+function animate() {
+    ctx.clearRect(0, 0, ctxW, ctxH);
+    ctx.fillStyle = "red";
+    ctx.fillRect(x, 10, 50, 50);
+//    ctx.rotate(0.6);
+    x++; 
+}
+var animateInterval;
+
+function goAnimation(){
+ animateInterval = setInterval(animate, 30);}
+
+
+function stopAnimation(){
+  clearInterval(animateInterval);
+}
+
+ 
+        </script>  
+          <input type="button" value="go" onclick="goAnimation()"></button> 
+          <input type="button" value="stop" onclick="stopAnimation()"></button>     
+    </body>
+</html>

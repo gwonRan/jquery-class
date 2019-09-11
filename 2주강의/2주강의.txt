@@ -1,0 +1,436 @@
+
+* 2주 수업
+
+지난 주 수업
+
+- 웹에서 javaScript를 사용하는 이유
+
+- jQuery는 무엇인가?
+
+- jQuery에서도 css 표현이 필요한 이유?
+
+- jQuery 객체를 만드는 방법
+  $("선택자 표현")
+
+- $(document).ready(function(){
+     ...
+     JQuery 명령문}) 이 작동하는 방법
+
+
+
+* jQuery(javaScript)를 수행하는 방법(순서)
+
+ - 웹은 위에서부터 아래서 한줄씩 수행한다.
+ - 한 번 지나가면 다시 돌아오지 않는다.
+ - function은 호출(call)이 되면 수행한다. 
+
+ - 지난 시간의 두 개의 예제를 가지고 설명하자.
+
+
+-  notReady.html(ex3-1)
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1js"></script>   
+ <script>
+     $('#sample1').hide();
+ </script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+
+</body>
+</html>
+
+
+- ex3-2
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1.js"></script>   
+ <script>
+   $(document).ready(function(){
+     $('#sample1').hide();})
+ </script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+
+</body>
+</html>
+
+-    $(document).ready(function(){
+       코드 }) 의 표현은
+     
+     $(function(){
+       코드 }) 로 표현할 수 있다. 
+
+  $(document).ready(function(){
+     $('#sample1').hide();});
+
+
+   $(function(){
+     $('#sample1').hide();});
+
+
+
+
+- notReady의 문서에서 script 부분의 위치를 
+  바꾸어 보자.
+  scriptPositionChange.html
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1.js"></script>   
+
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+ <script>
+     $('#sample1').hide();
+ </script>
+</body>
+</html>
+
+
+- function으로 처리하여 보자
+  functionCall.html
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1.js"></script>   
+ <script>
+   function Erase(){
+     $('#sample1').hide();}
+ </script>
+</head>
+<body>
+<div id="sample1" onClick="Erase()">이 div를 지우고 싶다!</div>
+
+
+</body>
+
+</html>
+
+
+
+ - 객체지향: 객체, 속성, 메소드
+             일반적인 객체지향이 개념, 사용법
+             웹의 상황에서 설명
+   - "."(dot) 표현 방법
+
+   - 객체(object) 
+   - 메소드(method) : 객체의 행동을 결정
+       사용방법: 객체의 이름.메소드이름();
+   - 속성(attribute) : 객체의 상태를 결정
+       현재의 상태를 변경하기 위해서는 그 객체의
+       속성 값을 변경
+       사용방법: 객체의 이름.속성 = 값;
+
+ - jQuery 객체를 만들기 위해서
+    jQuery("선택자 표현")
+ - jQuery객체.메소드();
+ - jQuery객체.속성;
+  
+    
+   javaScript: document.getElemetById().속성이름 = 값
+               document.getElementById().style.속성이름 = 값 
+   
+   - 아래의 표현이 가능하겠는가?
+       $().style.속성이름 = 값;   이 표현은 불가능하다.   왜? 
+   - jQuery  객체에 있는 속성, 메소드를 사용하여야 하고
+     javaScript 표현을 하기 위해서는 jQuery 객체를 DOM 객체로
+     전환하여야 한다. 
+   
+    jQuery 메소드 
+              get() : jQuery 객체를 javaScript(DOm) 객체로 변환
+              attr() : 태그의 속성 값에 관한 메소드
+              css()  : style(CSS)의 속성 값에 관한 메소드
+   
+
+    DOM 객체   ------> jQuery 객체  :   
+                      $(  )
+
+    jQuery 객체  -------->  DOM 객체
+                      get()
+
+  - 예제 jqueryGet().html
+
+
+
+- 강의에서는 html에 css, jQuery 포함하여 보여주고 있다.
+  css에서와 마찬가지로 외부 파일에서 정의하여 불러서(link)
+  사용하는 것이 바람직하다. 
+
+
+- linkJsFile.html
+<!DOCTYPE html>
+<html>
+<head> 
+ <link rel="stylesheet" type="text/css" href="style.css">  
+ <script src="jquery-3.2.1.js"></script>   
+ <script src="hide.js"></script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+</body>
+</html> 
+
+
+- hide.js 파일
+
+   $(function(){
+     $('#sample1').hide();});
+
+ 
+
+* id selector를 이용한 표현 
+  - ex3-4.html
+  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery test</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+  $(function(){
+	$('#cat').css('background','pink');
+	$('#dog').css('background','yellowgreen');});
+</script>
+</head>
+<body>
+<ul>
+	<li>fox</li>
+	<li id="cat">cat</li>
+	<li>fish</li>
+	<li id="dog">dog</li>
+	<li>bird</li>
+</ul>
+</body>
+</html>
+
+
+- 아래와 같은 html이 있다.  클래스 "woman"과 "man"이
+다른 background 색깔을 가지도록 jQuery를 작성해보자. 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-5</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+	<ul>
+		<li class="man">John</li>
+		<li class="man">Bob</li>
+		<li class="woman">Mary</li>
+		<li class="man">Taro</li>
+		<li class="woman">Hanako</li>
+	</ul>
+</body>
+</html>
+
+
+
+*  class selector를 이용한 표현 (ex3-5)
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-5</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+$(function(){
+	$('.man').css('background','lightblue');
+	$('.woman').css('background','pink');});
+</script>
+</head>
+<body>
+	<ul>
+		<li class="man">John</li>
+		<li class="man">Bob</li>
+		<li class="woman">Mary</li>
+		<li class="man">Taro</li>
+		<li class="woman">Hanako</li>
+	</ul>
+</body>
+</html>
+
+
+- 아래의 html에 태그 "p"와 "li" 부분이 다른
+background 색깔을 가지도록 jQuery를 첨가해보자.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-6</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+	<h1>Heading</h1>
+	<p>The quick brown fox jumps over the lazy dog.</p>
+	<ul>
+		<li>The quick brown fox jumps over the lazy dog.</li>
+		<li>The quick brown fox jumps over the lazy dog.</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+* tag selector를 이용한 표현 (ex3-6)
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-6</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+$(function(){
+	$('p').css('background','pink');
+	$('li').css('background','yellowgreen');});
+</script>
+</head>
+<body>
+	<h1>Heading</h1>
+	<p>The quick brown fox jumps over the lazy dog.</p>
+	<ul>
+		<li>The quick brown fox jumps over the lazy dog.</li>
+		<li>The quick brown fox jumps over the lazy dog.</li>
+	</ul>
+</body>
+</html>
+
+
+- 여기에서 질문!
+  $('선택자')를 이용하여 jQuery 객체화를 시키면 선택자로
+  표현된 객체가 한 개만 선택되는가 아니면 두 개 이상이
+  선택될 수 있는가?
+
+  - javaScript의 경우에는 처음부터 이 경우를 분리하여
+    객체화 시키는 메소드가 구별되어 있다. 
+
+
+
+* 전체 선택자
+- $('*').css('color', 'red');
+
+
+* 종속 선택자
+
+ - 아래의 문서에 "element1"은 background가 red
+                 "element3"은 background가 yellowgreen이 
+   되도록 jQuery를 작성하시오.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-7</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+
+</head>
+<body>
+<div id="hoge" class="foo">element1</div>
+<p id="hoge" class="foo">element2</div>
+<div id="hoge" class="bar">element3</div>
+<div id="moo" class="foo">element4</div>
+</body>
+</html>
+
+
+* 종속선택자표현(ex3-7.html) 
+   
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-7</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+$(function(){
+	$('div#hoge').css('background','red');
+	$('div#hoge.foo').css('background','yellowgreen');});
+</script>
+</head>
+<body>
+<div id="hoge" class="foo">element1</div>
+<p id="hoge" class="foo">element2</p>
+<div id="hoge" class="bar">element3</div>
+<div id="moo" class="foo">element4</div>
+</body>
+</html>
+
+- 위의 코드에서 
+  $('div#hoge.foo').css('background','yellowgreen');  부분을
+  삭제하면 어떻게 되겠는가?
+
+
+
+* 아래의 표현에서 <div>안에 있는 "pen"의 background는 lightblue
+                  <ul>안에 있는 "pen"의 background는 pink 가
+  되도록 jQuery를 작성하시오.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-8</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+
+</head>
+<body>
+	<div>
+		<p>I have a <strong>pen</strong>.</p>
+	</div>
+	<ul>
+		<li>His <strong>pen</strong> is red.</li>
+		<li>I need his <strong>pen</strong>.</li>
+	</ul>
+	<p>She doesn't need a <strong>pen</strong>.</p>
+</body>
+</html>
+
+
+* 자손선택자(ex3-8.html)
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex3-8</title>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+$(function(){
+	$('div strong').css('background','lightblue');
+	$('ul strong').css('background','pink');});
+</script>
+</head>
+<body>
+	<div>
+		<p>I have a <strong>pen</strong>.</p>
+	</div>
+	<ul>
+		<li>His <strong>pen</strong> is red.</li>
+		<li>I need his <strong>pen</strong>.</li>
+	</ul>
+	<p>She doesn't need a <strong>pen</strong>.</p>
+</body>
+</html>
+
+
+
+   
+

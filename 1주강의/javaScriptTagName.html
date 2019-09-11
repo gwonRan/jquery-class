@@ -1,0 +1,35 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><title> javaScriptTagName.html </title>
+
+<style type="text/css">
+
+</style>
+
+<script language="javascript">
+var imgIndex = 0;
+
+function imgChange(){
+var imgOrder;
+
+imgObj = document.body.getElementsByTagName("img");
+
+imgIndex = imgIndex + 1;
+imgOrder = (imgIndex % 2);
+if (imgOrder == 1) {
+  imgObj[0].src = "Lighthouse.jpg";}
+else {
+  imgObj[0].src = "Desert.jpg";}
+  
+}
+</script>
+
+</head>
+<body>
+그림을 바꾸어 보자.<br>
+<img src="Desert.jpg"> <br>
+<input type="button" value="click" onClick="imgChange()">
+
+</body>
+</html>

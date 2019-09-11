@@ -1,0 +1,205 @@
+
+
+* 1주 수업
+
+
+* 웹(world wide web)은 어떻게 구동되는가?
+
+ - 웹 환경을 가능하게 하는 프로그램은 무엇인가?
+ - 웹의 서비스를 신청하는 객체: client
+ - 웹의 서비스를 제공하는 객체: (web) server
+
+ - (초기의) 웹은 정적(static)이었다.
+   정적이라는 것을 client와 server와의 관계를 이용하여
+   설명해보자.
+
+ - 정적인 웹의 환경에서 웹의 화면(페이지)을 변경하기
+   위해서는 어떠한 과정(code)을 거칠까?
+   - static1.html
+   - static2.html
+     
+
+ - 화면의 변화를 server에 의존하지 않고 client에서
+   수행할 수 있도록 웹은 동적(dynamic)의 기능이
+   추가되었다.
+
+ - 동적인 기능을 수행할 수 있도록 해 주는 것 들이
+   javaScript와 jQuery이다.  javaScrip 프로그램을 도와주는
+   javaScript의 library가 jQuery 이다.
+   - javaScriptTagName.html
+   - jQueryTagName.html
+
+ - 이제 javaScript와 jQuery와의 관계를 알아보자.
+  - javaScrip의 library가 jQuery이다.
+    - "library" 라는 말의 의미는?
+       위의 예제를 가지고 설명하자. 
+  - 위의 예제에서  태그 선택자(tag selector)를 사용하지 않고
+    아이디 선택자를 사용한다면
+    - javaScritpIdName.html과
+    - jQueryIdName.html 코드로 변경한다.
+  - 두 개의 javaScript코드와 jQuery코드를 보았다.
+    차이점은 무엇인가?
+  - jQuery 코드는 어떤 이점이 있는가?
+    - 태그 이름, id 이름을 사용에 관계없이
+      동일한 fundtion을 사용하였다.   $(   )
+  - 실제 링크된 jQuery library에는 어떤 코드(구체적으로 
+    function)이 있겠는가?
+    - 이름이 "$" 인 function이 존재하고
+      $(parameter)에서 parameter의 종류에 따라
+
+      처리하는 코드가 존재할 것이다. 
+
+
+* css(Cascade Style Sheet)에 관하여
+
+ - css를 도입한 이유는 무엇인가?
+ - css가 javaScript(jQuery)에 필요한 이유는 
+   무엇일까?
+   
+
+
+- myEx1.html
+<!DOCTYPE html>
+<html>
+<head><title> the first ex </title>
+
+<style type="text/css">
+  p{font-weight: bold;
+    text-align: center;}
+</style>
+
+<script language="javascript">
+
+</script>
+
+</head>
+<body>
+<p> 처음하는 예제 </p>
+
+</body>
+</html>
+
+
+* 선택자(selector)의 종류
+
+ - 태그 선택자(tag selector)
+ - 클래스 선택자(class seclector)
+     하나 이상이 같은 클래스 이름을 가질 수 있다
+ - 아이디 선택자(id selector)
+     아이디 선택자의 이름은 같은 것이 없다. (unique)
+
+
+
+ - 종속 선택자, 하위 선택자, 전체 선택자, 
+   그룹 선택자, 자식 선택자, 인접 선택자
+
+
+* 이제 이 강의의 주제인 jQuery를 시작한다.
+
+- jQuery란 무엇인가?
+      javaScript의 function library
+      open source library
+      사용하기 위해서는 이 소스를 html 문서를
+      첨가시켜야 함, 따라서 이 소스를 link
+      시켜야 함, 
+      link 하는 두가지 방법
+      1.  html 문서에서 인터넷을 통해서 바로 연결
+      2.  jQuery library를
+          http://jquery.com  에서 download 하여 사용
+
+
+* 웹 화면에서 특정 영역을 client에서 변화 시키기
+위해서는 그 특정영역을 지정하여야 한다.  
+javaScript와 jQuery를 이용하여 특정 영역을 지정하는
+예를 보았다. 이 과정은 프로그래밍의 관점에서는
+javaScript 객체와 jQuery 객체을 만든 것이다.
+객체지향 프로그램의 개념을 생각해 보자. 
+
+* 이제 jQuery를 이용하여 특정영역을 지정하는 방법을
+  일반적인 관점에서 설명한다. 
+
+ - $ 표시 : jQuery 객체
+   $() : ()안에 가져올 객체의 selector 이름
+   $('태그이름'), $('#아이디이름'), $('.클래스이름')
+
+
+- ex3-1
+
+<!DOCTYPE html>
+<html>
+<head>  
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>   
+ <script>
+   $(document).ready(function(){
+     $('#sample1').hide();})
+ </script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+
+</body>
+</html>
+
+
+  또는
+
+- ex3-2
+
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1.min.js"></script>   
+ <script>
+   $(function(){
+     $('#sample1').hide();})
+ </script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+
+</body>
+</html>
+
+
+- 질문
+  위의 코드를 아래와 같이 변경하면 어떻게 되겠는가?
+
+-  notReady.html
+
+<!DOCTYPE html>
+<html>
+<head>   
+ <script src="jquery-3.2.1.js"></script>   
+ <script>
+     $('#sample1').hide();
+ </script>
+</head>
+<body>
+<div id="sample1">이 div를 지우고 싶다!</div>
+
+
+</body>
+</html>
+
+- 왜 이런 현상이 생기는가?
+  앞의 ready 메소드의 기능과 html이 화면에 보이는
+  방법을 고려하여 생각해 보자. 
+
+- 'ready' 이벤트를 사용하지 않고 스크립트 부분의 위치를
+  바꾸어 문제를 해결하려고 하면 스크립트를 어디로 
+  옮겨야 하겠는가?
+  - notReadySol.html
+
+
+- javaScript, jQuery를 이용하여 할 수 있는 다른
+  예제를 보자.
+ 
+
+* 학점
+
+ - 세 번의 Quiz
+ - CSS, jQuery를 이용한 학기 말 과제
+
+ 

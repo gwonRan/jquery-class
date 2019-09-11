@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>test</title>
+        <style>
+body{ margin:10px; background:#D0D0D0; }
+#myCanvas{ background:#FFF; border:#909090 1px solid; }
+        </style>
+    </head>
+    <body>
+<div id="iNum"></div>
+<div id="jNum"></div>
+        <canvas id="myCanvas" width="400" height="300">CANVAS를 지원하지 않습니다.</canvas> <br>
+ 문자열 입력: <input type="text" id="stringInput"> 
+              <input type="button" onClick="inputString()"><br> 
+        <script>            
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var targetStr;
+var strLength;
+var clearAni;
+
+// document.getElementById("iNum").innerHTML= "i: "+ strLength;
+var i, j;
+var showStr;
+var gCounter;
+
+var ctxW = canvas.width; 
+var ctxH = canvas.height;
+
+ 
+
+ctx.font = "italic bold 40px Arial, sans-serif";
+
+function inputString(){
+ctx.clearRect(0, 0, ctxW, ctxH);
+gCounter=0;
+targetStr = document.getElementById("stringInput").value;
+strLength = targetStr.length;
+clearAni = setInterval(showCounter, 300);
+
+}
+
+function strAnimation(loopCounter){ 
+//document.getElementById("iNum").innerHTML= "i: "+ loopCounter;
+ 
+  for (i=0; i<loopCounter; i++){
+  //  document.getElementById("iNum").innerHTML= "i: "+ i;
+   showStr = targetStr.substr(0, loopCounter);
+   ctx.clearRect(0, 0, ctxW, ctxH);
+   ctx.fillText(showStr, 50, 100);} 
+}
+
+function showCounter() {
+gCounter = gCounter + 1;
+if (gCounter < (strLength+1)) {
+ setTimeout(strAnimation(gCounter), 300);}
+else {
+ clearInterval(clearAni);}
+}
+  
+ 
+        </script> 
+
+
+
+       
+    </body>
+</html>  
