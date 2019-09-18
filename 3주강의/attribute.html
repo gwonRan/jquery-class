@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head> 
+
+ <style>
+   #id1 {background-color: orange;
+           font-style: italic;}
+ </style>
+
+ <script src="jquery-3.2.1.js"></script>   
+ <script>
+   function textBoxChange(){
+    alert('check1');
+    $('#id1').get(0).value = "";
+    $('#id1').get(0).style.backgroundColor = 'yellow'; 
+}
+// check1을 클릭하면 제이쿼리 실행문을 실행해라 인건가?
+// $('#id1')는 제이쿼리.get(0)자바스크립트.value = "";자바스크립트의 벨류
+
+  
+ </script>
+</head>
+<body>
+<input id="id1" type="text" value="타입하세요"> 
+<input type="button" value="click" onclick="textBoxChange()">
+<!-- onclick="textBoxChange는 자바스크립트의 펑션 코드를 작성해준 것 -->
+<!-- <input id="input1" type="text" value="check"> -->
+
+</body>
+</html>

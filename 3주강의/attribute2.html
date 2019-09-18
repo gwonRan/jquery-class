@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head> 
+
+ <style>
+   #id1 {background-color: orange;
+           font-style: italic;}
+ </style>
+
+ <script src="jquery-3.2.1.js"></script>   
+ <script>
+   function textBoxChange(){
+    alert('check1');
+    $('#id1').attr('value',"");
+    $('#id1').css('background-color', 'yellow');
+    x=$('#id1').css('background-color');
+    $('#id1').attr('value',x);
+    // $('#id1').attr('value',$('#id1').css('background-color')); 백그라운드 컬러의 값을 가져옴
+    //제이쿼리의 id의 백그라운드 컬러를 x라고 해주고 벨류x를 속성값에 넣어주는건가?
+}
+// $('#id1').attr('value',""); 제이쿼리 속성을 부여
+// x=$('#id1').css('background-color'); 백그라운드 컬러를 가져온다.
+
+
+ </script>
+</head>
+<body>
+<input id="id1" type="text" value="타입하세요"> 
+<input type="button" value="click" onclick="textBoxChange()">
+<!-- <input id="input1" type="text" value="check"> -->
+
+</body>
+</html>
